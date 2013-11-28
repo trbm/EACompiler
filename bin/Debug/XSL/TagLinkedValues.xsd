@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="root">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="TagLlinkValues"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="TagLlinkValues">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="TagLinkValue"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="TagLinkValue">
+        <xs:complexType>
+            <xs:attribute name="attribute" use="required" type="xs:string"/>
+            <xs:attribute name="attributeType" use="required" type="xs:string"/>
+            <xs:attribute name="class" use="required" type="xs:string"/>
+            <xs:attribute name="domain" use="required" type="xs:string"/>
+            <xs:attribute name="hashcode" use="required" type="xs:integer"/>
+            <xs:attribute name="tagId" use="required" type="xs:string"/>
+            <xs:attribute name="description" use="optional" type="xs:string"/>
+            <xs:attribute name="persistent" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,25 @@
+D:\___VERSION_CONTROL____\SVN Repository 2012\Development Projects\ArrayPower\STAGING\EACompiler\EACompilerConsole\bin\Release\EACompilerConsole.exe
+D:\___VERSION_CONTROL____\SVN Repository 2012\Development Projects\ArrayPower\STAGING\EACompiler\EACompilerConsole\bin\Release\EACompilerConsole.pdb
+D:\___VERSION_CONTROL____\SVN Repository 2012\Development Projects\ArrayPower\STAGING\EACompiler\EACompilerConsole\bin\Release\EACompilerII.dll
+D:\___VERSION_CONTROL____\SVN Repository 2012\Development Projects\ArrayPower\STAGING\EACompiler\EACompilerConsole\bin\Release\EACompilerII.pdb
+D:\___VERSION_CONTROL____\SVN Repository 2012\Development Projects\ArrayPower\STAGING\EACompiler\EACompilerConsole\bin\Release\EACompilerII.xml
+D:\___VERSION_CONTROL____\SVN Repository 2012\Development Projects\ArrayPower\STAGING\EACompiler\EACompilerConsole\obj\x86\Release\EACompilerConsole.csprojResolveAssemblyReference.cache
+D:\___VERSION_CONTROL____\SVN Repository 2012\Development Projects\ArrayPower\STAGING\EACompiler\EACompilerConsole\obj\x86\Release\EACompilerConsole.exe
+D:\___VERSION_CONTROL____\SVN Repository 2012\Development Projects\ArrayPower\STAGING\EACompiler\EACompilerConsole\obj\x86\Release\EACompilerConsole.pdb
+D:\___VERSION_CONTROL____\SVN_REPOSITORY_Dropbox_hosted\Development Projects\ArrayPower\STAGING\EACompiler\EACompilerConsole\bin\Release\EACompilerConsole.exe
+D:\___VERSION_CONTROL____\SVN_REPOSITORY_Dropbox_hosted\Development Projects\ArrayPower\STAGING\EACompiler\EACompilerConsole\bin\Release\EACompilerConsole.pdb
+D:\___VERSION_CONTROL____\SVN_REPOSITORY_Dropbox_hosted\Development Projects\ArrayPower\STAGING\EACompiler\EACompilerConsole\bin\Release\EACompilerII.dll
+D:\___VERSION_CONTROL____\SVN_REPOSITORY_Dropbox_hosted\Development Projects\ArrayPower\STAGING\EACompiler\EACompilerConsole\bin\Release\EACompilerII.pdb
+D:\___VERSION_CONTROL____\SVN_REPOSITORY_Dropbox_hosted\Development Projects\ArrayPower\STAGING\EACompiler\EACompilerConsole\bin\Release\EACompilerII.xml
+D:\___VERSION_CONTROL____\SVN_REPOSITORY_Dropbox_hosted\Development Projects\ArrayPower\STAGING\EACompiler\EACompilerConsole\obj\x86\Release\EACompilerConsole.csprojResolveAssemblyReference.cache
+D:\___VERSION_CONTROL____\SVN_REPOSITORY_Dropbox_hosted\Development Projects\ArrayPower\STAGING\EACompiler\EACompilerConsole\obj\x86\Release\EACompilerConsole.exe
+D:\___VERSION_CONTROL____\SVN_REPOSITORY_Dropbox_hosted\Development Projects\ArrayPower\STAGING\EACompiler\EACompilerConsole\obj\x86\Release\EACompilerConsole.pdb
+\\vmware-host\Shared Folders\Desktop\__VC__\Development Projects\EACompiler\EACompilerConsole\bin\Release\EACompilerConsole.exe
+\\vmware-host\Shared Folders\Desktop\__VC__\Development Projects\EACompiler\EACompilerConsole\bin\Release\EACompilerConsole.pdb
+\\vmware-host\Shared Folders\Desktop\__VC__\Development Projects\EACompiler\EACompilerConsole\bin\Release\EACompilerII.dll
+\\vmware-host\Shared Folders\Desktop\__VC__\Development Projects\EACompiler\EACompilerConsole\bin\Release\EACompilerII.pdb
+\\vmware-host\Shared Folders\Desktop\__VC__\Development Projects\EACompiler\EACompilerConsole\obj\x86\Release\EACompilerConsole.exe
+\\vmware-host\Shared Folders\Desktop\__VC__\Development Projects\EACompiler\EACompilerConsole\obj\x86\Release\EACompilerConsole.pdb
+\\vmware-host\Shared Folders\Desktop\__VC__\Development Projects\EACompiler\EACompilerConsole\obj\x86\Release\EACompilerConsole.csprojResolveAssemblyReference.cache
+\\vmware-host\Shared Folders\Desktop\__VC__\Development Projects\EACompiler\EACompilerConsole\bin\Release\EACompilerConsole.exe.config
+\\vmware-host\Shared Folders\Desktop\__VC__\Development Projects\EACompiler\EACompilerConsole\bin\Release\Interop.EA.dll
