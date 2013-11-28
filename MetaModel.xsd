@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2005/08/xml.xsd"/>
+    <xs:element name="Model">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ModeledDomains"/>
+            </xs:sequence>
+            <xs:attribute fixed="1002" name="schemaVersion" type="xs:long" use="optional"/>
+            <xs:attribute name="sourceFileDirectory" type="xs:string" use="required"/>
+            <xs:attribute name="intermediateFile" type="xs:string" use="required"/>
+            <xs:attribute name="modelFile" type="xs:string" use="required"/>
+            <xs:attribute name="EACompilerVersion" type="xs:string" use="required"/>
+            <xs:attribute name="generated" type="xs:string" use="required"/>
+            <xs:attribute name="hashcodeSum" type="xs:decimal" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ModeledDomains">
+        <xs:complexType>
+            <xs:sequence maxOccurs="unbounded">
+                <xs:element ref="ModeledDomain"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ModeledDomain">
+        <xs:complexType>
+            <xs:sequence minOccurs="0">
+                <xs:element minOccurs="0" ref="Enumerations"/>
+                <xs:element name="Diagram">
+                    <xs:complexType>
+                        <xs:attribute name="diagramGUID" type="xs:string" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element ref="Classes"/>
+                <xs:element minOccurs="0" name="DomainFunctions">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="DomainFunction">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Parameter" maxOccurs="unbounded" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:attribute name="name" type="xs:string" use="required"/>
+                                                <xs:attribute name="dataType" type="xs:string" use="required"/>
+                                                <xs:attribute name="description" type="xs:string" use="optional"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element minOccurs="0" name="ImplementationCode"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" type="xs:string" use="required"/>
+                                    <xs:attribute name="meaning" type="xs:string" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element minOccurs="0" ref="Relates"/>
+                <xs:element minOccurs="0" ref="Bridging"/>
+                <xs:element name="Instances" minOccurs="0">
+                    <!-- <xs:attribute ref="xml:base"/>-->
+                    <xs:complexType mixed="false">
+                        <xs:sequence>
+                            <xs:element ref="Instance" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                        <!--                                    <xs:sequence>
+                                        <xs:element maxOccurs="unbounded" ref="Instance"/>
+                                        <xs:element maxOccurs="unbounded" minOccurs="0" ref="Relates"/>
+                                    </xs:sequence>-->
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name" use="required" type="xs:string"/>
+            <xs:attribute name="compilerVersion" type="xs:string"/>
+            <xs:attribute name="creationDate" type="xs:string"/>
+            <xs:attribute name="description" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Classes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="Class" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Class">
+        <xs:complexType>
+            <xs:all>
+                <xs:element ref="Attributes" minOccurs="0"/>
+                <xs:element ref="Events" minOccurs="0"/>
+                <xs:element ref="Transitions" minOccurs="0"/>
+                <xs:element ref="States" minOccurs="0"/>
+                <xs:element name="Supertype" minOccurs="0">
+                    <xs:complexType>
+                        <xs:attribute name="name" type="xs:string"/>
+                        <xs:attribute name="elementId" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element ref="Relationships" minOccurs="0"/>
+                <xs:element name="Operations" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" ref="Operation"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element minOccurs="0" name="Stereotypes">
+                    <xs:complexType>
+                        <xs:sequence minOccurs="0">
+                            <xs:element maxOccurs="unbounded" minOccurs="1" name="Stereotype">
+                                <xs:complexType>
+                                    <xs:attribute name="name" type="xs:string" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:all>
+            <xs:attribute name="isInterface" type="xs:boolean"/>
+            <xs:attribute name="isOmitted" type="xs:boolean"/>
+            <xs:attribute name="name" use="required" type="xs:NCName"/>
+            <xs:attribute name="elementId" type="xs:integer" use="required"/>
+            <xs:attribute name="description" type="xs:string"/>
+            <xs:attribute name="minimumAllocation" type="xs:int"/>
+            <xs:attribute name="classID" type="xs:long" use="required"/>
+            <xs:attribute name="stateDiagramGUID" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Attributes">
+        <xs:complexType>
+            <xs:sequence maxOccurs="unbounded" minOccurs="0">
+                <xs:element ref="Attribute"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Attribute">
+        <xs:complexType>
+            <xs:attribute name="dataType" use="required" type="xs:string"/>
+            <xs:attribute name="name" use="required" type="xs:NCName"/>
+            <xs:attribute name="visibility" type="xs:string"/>
+            <xs:attribute name="description" type="xs:string"/>
+            <xs:attribute name="isConst" type="xs:boolean" use="required"/>
+            <xs:attribute name="initialValue" type="xs:string" use="optional"/>
+            <xs:attribute name="TLVhashcode" type="xs:decimal"/>
+            <xs:attribute name="persistent">
+                <xs:simpleType id="ePERSISTENCE_STATE">
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="WrittenToFlash"/>
+                        <xs:enumeration value="AwaitingWriteToFlash"/>
+                        <xs:enumeration value="NeverPersist"/>
+                    </xs:restriction>
+                </xs:simpleType>
+
+
+            </xs:attribute>
+            <xs:attribute name="hasUpdateOperation" type="xs:boolean"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="States">
+        <xs:complexType>
+            <xs:sequence minOccurs="0">
+                <xs:element maxOccurs="unbounded" ref="State"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="State">
+        <xs:complexType mixed="true">
+            <xs:attribute name="elementID" use="required" type="xs:integer"/>
+            <xs:attribute name="isQuiet" use="required" type="xs:boolean"/>
+            <xs:attribute name="name" use="required" type="xs:NCName"/>
+            <xs:attribute name="isInitialState" type="xs:boolean"/>
+            <xs:attribute name="isIgnoreState" type="xs:boolean"/>
+            <xs:attribute name="isPigtailState" type="xs:boolean"/>
+            <xs:attribute name="isMeatballState" type="xs:boolean" use="required"/>
+            <xs:attribute name="stateNumber" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Transitions">
+        <xs:complexType>
+            <xs:sequence maxOccurs="unbounded" minOccurs="0">
+                <xs:element maxOccurs="unbounded" ref="Transition" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Transition">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="SourceSideState">
+                    <xs:complexType>
+                        <xs:attribute name="elementID" type="xs:integer"/>
+                        <xs:attribute name="name" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="TargetSideState">
+                    <xs:complexType>
+                        <xs:attribute name="elementID" type="xs:integer"/>
+                        <xs:attribute name="name" type="xs:string"/>
+                        <xs:attribute name="isIgnoreState" type="xs:boolean" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:all>
+            <xs:attribute name="elementID" use="required" type="xs:integer"/>
+            <xs:attribute name="eventElementID" use="optional" type="xs:string"/>
+            <xs:attribute name="transitionEventString" type="xs:string"/>
+            <xs:attribute name="isPigtailTransition" type="xs:boolean"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Events">
+        <xs:complexType>
+            <xs:sequence maxOccurs="unbounded" minOccurs="0">
+                <xs:element maxOccurs="unbounded" ref="Event"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Event">
+        <xs:complexType>
+            <xs:sequence maxOccurs="unbounded" minOccurs="0">
+                <xs:element name="Parameter">
+                    <xs:complexType>
+                        <xs:attribute name="dataType" type="xs:string"/>
+                        <xs:attribute name="name" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name" use="required" type="xs:NCName"/>
+            <xs:attribute name="transitionEventString" use="required" type="xs:string"/>
+            <xs:attribute name="eventElementID" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Relationships">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="Relationship" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Relationship">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ThatSide"/>
+                <xs:element ref="ThisSide"/>
+
+            </xs:sequence>
+            <xs:attribute name="name" use="required" type="xs:string"/>
+            <xs:attribute name="isReflexive" type="xs:boolean"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ThatSide">
+        <xs:complexType>
+            <xs:attribute name="role" use="optional" type="xs:string"/>
+            <xs:attribute name="isMany" type="xs:boolean"/>
+            <xs:attribute name="className" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ThisSide">
+        <xs:complexType>
+            <xs:attribute name="role" use="optional" type="xs:string"/>
+            <xs:attribute name="isMany" type="xs:boolean"/>
+            <xs:attribute name="className" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Enumerations">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="Enumeration"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Enumeration">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="Enumerator">
+                    <xs:complexType>
+                        <xs:attribute name="name" type="xs:string"/>
+                        <xs:attribute name="description" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Instance">
+        <xs:complexType>
+            <xs:sequence minOccurs="0">
+                <xs:element minOccurs="0" name="InitialEvent">
+                    <xs:complexType>
+                        <xs:attribute name="delay" type="xs:string"/>
+                        <xs:attribute name="name" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="AttributeValue">
+                    <xs:complexType>
+                        <xs:attribute name="name" type="xs:string"/>
+                        <xs:attribute name="initialValue" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="className" type="xs:NCName" use="required"/>
+            <xs:attribute name="description" type="xs:string" use="optional"/>
+            <xs:attribute name="id" type="xs:NCName" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Relates">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Relate" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Relate">
+        <xs:complexType>
+            <xs:attribute name="name" type="xs:string" use="required"/>
+            <xs:attribute name="id1" type="xs:string" use="required"/>
+            <xs:attribute name="id2" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Instances">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Instance"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:element name="Bridging">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="IncludeFile" minOccurs="0"/>
+                <xs:element ref="AcceptedMessages" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="IncludeFile">
+        <xs:complexType>
+            <xs:attribute name="filename" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Domains">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" ref="IncludeFile"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AcceptedMessages">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="Message" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Message">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="ReturnValue"/>
+                <xs:element maxOccurs="unbounded" ref="Parameter" minOccurs="0"/>
+                <xs:element ref="ImplementationCode"/>
+            </xs:sequence>
+            <xs:attribute name="meaning"/>
+            <xs:attribute name="name" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ReturnValue">
+        <xs:complexType>
+            <xs:attribute name="dataType" use="required" type="xs:NCName"/>
+            <xs:attribute name="meaning" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ImplementationCode">
+        <xs:complexType mixed="true">
+            <xs:attribute name="language" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Parameter">
+        <xs:complexType>
+            <xs:attribute name="dataType" use="required"/>
+            <xs:attribute name="description"/>
+            <xs:attribute name="name" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Domain">
+        <xs:complexType>
+            <xs:choice minOccurs="0">
+                <xs:element ref="Classes"/>
+            </xs:choice>
+            <xs:attribute name="isRealized" type="xs:boolean"/>
+            <xs:attribute name="name" type="xs:NCName" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Operation">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="Parameter">
+                    <xs:complexType>
+                        <xs:attribute name="name" type="xs:string"/>
+                        <xs:attribute name="dataType" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string"/>
+            <xs:attribute name="returnType" type="xs:string"/>
+            <xs:attribute name="isEvent" type="xs:boolean"/>
+            <xs:attribute name="updatesAttributeName" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
