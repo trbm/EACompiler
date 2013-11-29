@@ -1,0 +1,3 @@
+use the registration import 'EACompilerRegistryHookup.reg' in regedit to setup the linkage 
+between the addin and the EnterpriseArchitect tool. that file should be found in this
+same directory.

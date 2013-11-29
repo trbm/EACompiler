@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- feature3 using git flow -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="Population">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="Namespaces"/>
+                <xs:element ref="Instances" minOccurs="0"/>
+                <xs:element ref="Relates" minOccurs="0"/>
+                <xs:element minOccurs="0" ref="ScriptedResponses"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Instances">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="Instance" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Instance">
+        <xs:complexType>
+            <xs:choice maxOccurs="unbounded" minOccurs="0">
+                <xs:element ref="AttributeValue" minOccurs="0"/>
+                <xs:element ref="InitialEvent" minOccurs="0"/>
+            </xs:choice>
+            <xs:attribute name="className" use="required" type="xs:string"/>
+            <xs:attribute name="description"/>
+            <xs:attribute name="id" use="required" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="AttributeValue">
+        <xs:complexType>
+            <xs:attribute name="initialValue" use="required"/>
+            <xs:attribute name="name" use="required" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="InitialEvent">
+        <xs:complexType>
+            <xs:attribute name="delay"/>
+            <xs:attribute name="name" use="required" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Relates">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="Relate" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Relate">
+        <xs:complexType>
+            <xs:attribute name="id1" use="required" type="xs:string"/>
+            <xs:attribute name="id2" use="required" type="xs:string"/>
+            <xs:attribute name="name" use="required" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Namespace">
+        <xs:complexType>
+            <xs:attribute name="name" use="required" type="xs:string"/>
+            <xs:attribute name="description" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Namespaces">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Namespace" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ScriptedResponses">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Device" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Device">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="Response">
+                    <xs:complexType>
+                        <xs:attribute name="string" type="xs:string" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" use="required" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
