@@ -1,7 +1,11 @@
 
+
+' masterA
+
+
 '____________________________________________________________________
 '
-' © Copyright 2008, brennan/marquez  All rights reserved.
+' ï¿½ Copyright 2008, brennan/marquez  All rights reserved.
 '____________________________________________________________________
 '
 '     $RCSfile: frmMain.vb,v $
